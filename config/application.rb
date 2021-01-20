@@ -13,6 +13,13 @@ module Sauna
 
     # Configuration for the application, engines, and railties goes here.
     #
+    # ここから
+    initializer(:remove_action_mailbox_and_activestorage_routes, after: :add_routing_paths) { |app|
+      app.routes_reloader.paths.delete_if {|path| path =~ /activestorage/}
+      app.routes_reloader.paths.delete_if {|path| path =~ /actionmailbox/ }
+     }# ここまで変なroutesが、最初に設定されるやつを消したやつ。
+     
+
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
