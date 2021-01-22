@@ -1,0 +1,55 @@
+<h1>サウナ詳細画面</h1>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>サウナ名</th>
+      <th>場所</th>
+      <th>サウナ画像</th>
+      <th>説明</th>
+      <th>サウナ室-温度</th>
+      <th>水風呂-温度</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @post_sauna.sauna_name %></td>
+      <td><%= @post_sauna.prefecture %></td>
+      <td><%= attachment_image_tag @post_sauna, :sauna_image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg"  %></td>
+      <td><%= @post_sauna.sauna_introduction %></td>
+      <td><%= @post_sauna.temperature %></td>
+      <td><%= @post_sauna.water_pool %></td>
+    </tr>
+  </tbody>
+</table>
+<h4>コメント一覧</h4>
+<% @post_sauna.post_comments.each do |post_comment|%>
+<%= post_comment.comment %>
+
+<%= link_to post_comment.user.name, user_path(post_comment.user) %>
+
+<br>
+<% end %>
+
+<h4>コメント投稿フォーム</h4>
+<div class="new-comment">
+  <%= form_with(model:[@post_sauna, @post_comment], local: true) do |f| %>
+  <%= f.text_area :comment, pleceholder: "コメント入力はこちら" %>
+  <%= f.submit "送信する" %>
+  <% end %>
+</div>
+
+<div class="best-sauna-form">
+
+  <% if @post_sauna.id == current_user.best_sauna_id %>
+  あなたのお気に入りのサウナです
+  <% else %>
+  お気に入りのサウナに変更しますか？
+  <% end %>
+
+</div>
+
+<%= link_to  "編集", edit_post_sauna_path(@post_sauna) %>
+|
+<%= link_to  "削除", post_sauna_path(@post_sauna), method: :delete %>

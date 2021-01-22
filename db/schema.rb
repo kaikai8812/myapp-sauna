@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_20_044605) do
+ActiveRecord::Schema.define(version: 2021_01_22_073139) do
+
+  create_table "post_comments", force: :cascade do |t|
+    t.text "comment"
+    t.integer "user_id"
+    t.integer "post_sauna_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "post_saunas", force: :cascade do |t|
+    t.text "sauna_name"
+    t.string "sauna_image_id"
+    t.text "sauna_introduction"
+    t.string "prefecture"
+    t.string "temperature"
+    t.string "water_pool"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

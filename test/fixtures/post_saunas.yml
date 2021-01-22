@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sauna_name: MyText
+  sauna_image_id: MyString
+  sauna_introduction: MyText
+  prefecture: MyString
+  temperature: MyString
+  water_pool: MyString
+
+two:
+  sauna_name: MyText
+  sauna_image_id: MyString
+  sauna_introduction: MyText
+  prefecture: MyString
+  temperature: MyString
+  water_pool: MyString

@@ -1,0 +1,24 @@
+<h1>サウナ編集画面</h1>
+
+<%= form_with model: @post_sauna, url: post_sauna_path, local:true do |f| %>
+<h4>サウナ名</h4>
+<%= f.text_field :sauna_name %>
+<h4>サウナ画像</h4>
+
+<%= f.attachment_field :sauna_image %>
+
+<h4>説明</h4>
+<%= f.text_field :sauna_introduction %>
+
+
+<h4>所在地</h4>
+<%= f.text_field :prefecture %>
+<h4>サウナ温度</h4>
+<%= f.text_field :temperature %>
+<h4>水風呂温度</h4>
+<%= f.text_field :water_pool %>
+
+
+<%= f.submit '投稿' %>
+
+<%end%>

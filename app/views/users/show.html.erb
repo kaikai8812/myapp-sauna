@@ -1,0 +1,23 @@
+<h1>ユーザ詳細画面</h1>
+<table>
+  <thead>
+    <tr>
+      <th>ユーザ名</th>
+      <th>ユーザ画像</th>
+      <th>自己紹介</th>
+      <th>お気に入りのサウナ</th>
+      <th>居住地</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @user.name %></td>
+      <td><%= attachment_image_tag @user, :profile_image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg"  %></td>
+      <td><%= @user.introduction %></td>
+      <td>記述前</td>
+      <td><%= @user.prefecture %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to  "プロフィール編集画面へ", edit_user_path(current_user) %>

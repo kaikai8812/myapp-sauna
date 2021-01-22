@@ -1,0 +1,2 @@
+module PostSaunaHelper
+end
