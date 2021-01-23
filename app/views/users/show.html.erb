@@ -14,7 +14,13 @@
       <td><%= @user.name %></td>
       <td><%= attachment_image_tag @user, :profile_image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg"  %></td>
       <td><%= @user.introduction %></td>
-      <td>記述前</td>
+      <td>
+        <% @favorite_posts.each do |f_post|%>
+        <%= link_to post_sauna_path(f_post) do %>
+        <%= f_post.sauna_name%><br>
+        <%end%>
+        <%end%>
+      </td>
       <td><%= @user.prefecture %></td>
     </tr>
   </tbody>

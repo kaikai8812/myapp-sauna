@@ -42,12 +42,21 @@
 
 <div class="best-sauna-form">
 
-  <% if @post_sauna.id == current_user.best_sauna_id %>
-  あなたのお気に入りのサウナです
+  <% if @post_sauna.favorited_by?(current_user)%>
+  <p>
+    <%= link_to post_sauna_favorites_path(@post_sauna), method: :delete do %>
+    あなたのお気に入りのサウナです
+    <%end%>
+  </p>
   <% else %>
+  <%=link_to post_sauna_favorites_path(@post_sauna), method: :post do %>
   お気に入りのサウナに変更しますか？
+  <%end%>
   <% end %>
 
+</div>
+<div class="best-sauna_count">
+  <p><%= @post_sauna.favorites.count %>人がお気に入りにしています！ </p>
 </div>
 
 <%= link_to  "編集", edit_post_sauna_path(@post_sauna) %>

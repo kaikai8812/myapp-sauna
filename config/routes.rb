@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 root to: 'homes#top'
 resources :post_sauna, only: [:new, :create, :index, :show, :destroy, :update, :edit ] do
   resources :post_comments, only: [:create, :destroy]
+  resource :favorites, only: [:create, :destroy]
   end
 resources :users, only: [:show, :edit, :update]
+
 end
